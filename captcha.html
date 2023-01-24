@@ -22,8 +22,18 @@
 <script>
     function myCallback(solution) {
         console.log(solution);
+        document.getElementById("validateRequest").innerHTML = document.getElementById("template").innerHTML.replace("$SOLUTION", solution);
     }
 </script>
 
+<pre style="display: none" id="template">
+    curl --location --request POST 'https://api.friendlycaptcha.com/api/v1/siteverify' \
+      --form secret="$API_KEY" \
+      --form solution="$SOLUTION"
+</pre>
+
+<b>Validation Request</b>
+<pre id="validateRequest">
+</pre>
 </body>
 </html>
